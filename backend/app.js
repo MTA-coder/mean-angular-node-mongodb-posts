@@ -4,20 +4,10 @@ const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const app = express();
-
-const fakePosts = require('./fake/post.json');
-
-
 app.use(bodyParser.json());
 app.use(cors());
-//#region CORS
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Header", "*");
-//   res.setHeader("Access-Control-Allow-Methods", "*");
-//   next();
-// });
-//#endregion
+
+const fakePosts = require('./fake/post.json');
 
 //#region Fetch Posts
 app.use('/api/post/get', (request, response, next) => {
