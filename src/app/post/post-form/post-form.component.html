@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-content>
+    <h4><b>Post Form</b></h4>
+    <form class="example-form"
+          [formGroup]="postForm"
+          (ngSubmit)="addPost()">
+      <!-- Name -->
+      <mat-form-field class="example-full-width"
+                      appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text"
+               matInput
+               formControlName="name"
+               placeholder="Enter Name..."
+               required>
+        <mat-error *ngIf="f['name'].hasError('required')">
+          This field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field class="example-full-width"
+                      appearance="outline">
+        <mat-label>Description</mat-label>
+        <input type="text"
+               matInput
+               formControlName="description"
+               placeholder="Enter Description..."
+               required>
+        <mat-error *ngIf="f['description'].hasError('required')">
+          This field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <hr>
+
+      <div class="form-footer">
+        <button type="button"
+                mat-flat-button
+                color="warn"
+                (click)="clearForm()"> Clear</button>
+        <button type="submit"
+                mat-flat-button
+                color="primary">Save</button>
+      </div>
+
+    </form>
+
+
+  </mat-card-content>
+</mat-card>
