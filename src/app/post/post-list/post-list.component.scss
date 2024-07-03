@@ -1,0 +1,19 @@
+.text-center {
+  text-align: center;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+
+  mat-icon {
+    margin-inline: 0.5rem;
+  }
+}

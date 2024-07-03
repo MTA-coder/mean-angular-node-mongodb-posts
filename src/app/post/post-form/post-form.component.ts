@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IPost } from 'src/app/models/post';
+import { IPost } from 'src/app/post/models/post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-form',
@@ -15,7 +16,10 @@ export class PostFormComponent implements OnInit {
     return this.postForm.controls;
   }
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(
+    private _fb: FormBuilder,
+    private _postService: PostService
+  ) { }
 
   ngOnInit(): void {
     this.initialForm();
@@ -31,6 +35,7 @@ export class PostFormComponent implements OnInit {
   addPost() {
     if (this.postForm.valid) {
       const post = this.postForm.value as IPost;
+      this._postService.addNewPost(post);
     }
   }
 

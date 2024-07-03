@@ -1,1 +1,26 @@
-<p>post-list works!</p>
+*<ng-container *ngIf="(postList$| async) as postList;else noDataFound">
+  <ng-container *ngIf=" postList.length > 0 ; else noDataFound">
+    <mat-accordion class="post-list">
+      <mat-expansion-panel *ngFor="let item of postList">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{item.name}}
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <h6>{{item.description}}</h6>
+        <div class="footer">
+          <button type="button"
+                  mat-flat-button> Edit <mat-icon>edit</mat-icon> </button>
+          <button type="button"
+                  mat-flat-button>Delete <mat-icon>delete</mat-icon></button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+</ng-container>
+
+<!-- No Data -->
+<ng-template #noDataFound>
+  <h4 class="text-center"><b>No Posts Added!</b></h4>
+</ng-template>
