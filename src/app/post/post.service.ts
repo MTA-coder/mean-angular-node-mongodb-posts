@@ -23,6 +23,7 @@ export class PostService {
 
   addNewPost(post: IPost): void {
     const posts = this.posts.value;
+    this.createPostsAPI(post);
     posts.push(post);
     this.posts.next([...posts]);
   }
@@ -32,9 +33,15 @@ export class PostService {
   }
 
   fetchPostsAPI() {
-    const endpoint = this.joinURL('posts');
+    const endpoint = this.joinURL('post/get');
     this._http.get<IResponse<IPost[]>>(endpoint)
       .subscribe((response: IResponse<IPost[]>) => this.posts.next(response.data));
+  }
+
+  createPostsAPI(post: IPost) {
+    const endpoint = this.joinURL('post/create');
+    this._http.post<any>(endpoint, post)
+      .subscribe((response: any) => console.log(`Posted Frontend => ${response}`));
   }
 
   private joinURL(endpoint: string) {
