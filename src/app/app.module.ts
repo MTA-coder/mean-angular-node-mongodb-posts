@@ -9,6 +9,7 @@ import { MaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostService } from './post/post.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PostService } from './post/post.service';
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
